@@ -2,6 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include "functions.h"
 
 /*
   File: Menu.c
@@ -26,16 +27,16 @@ void play_loop(Game *g);
 void read_attempt(char *guess, Game *g);
 void print_sep(Game *g);
 void print_guess_row(char *guess, Game *g);
-void lowercase(char *s);
+void uppercase(char *s);
 int all_letters(char *s);
 void clear_line();
 int  get_int_choice(char *prompt, int min_val, int max_val);
 
 
-int main()
+void main()
 {
   Game g;
-  int difficulty = 2; //default 
+  int difficulty = 1; //default 
   g.word_length = 5;
   g.max_tries = 6;
   int running = 1;
@@ -59,19 +60,19 @@ int main()
       {
         case 1: 
         {
-          g.word_length = 3; 
-          g.max_tries = 4;
+          g.word_length = 5; 
+          g.max_tries = 6;
           play_easy(&g);
           break;
         } case 2:
         {
-          g.word_length = 5; 
+          g.word_length = 8; 
           g.max_tries = 6;
           play_medium(&g);
           break;
         } case 3:
         {
-          g.word_length = 8; 
+          g.word_length = 10; 
           g.max_tries = 6;
           play_hard(&g);
           break;
@@ -85,7 +86,7 @@ int main()
     else if (choice == 3)
     {
       difficulty = get_int_choice(
-          "\nChoose difficulty:\n  1: Easy - 3 letter words with 4 tries\n  2: Medium - 5 letter word with 6 tires\n  3: Hard - 8 letter word with 6 tries\n> ",
+          "\nChoose difficulty:\n  1: Easy - 5 letter words with 6 tries\n  2: Medium - 8 letter word with 6 tires\n  3: Hard - 10 letter word with 6 tries\n> ",
           1, 3);
       printf("\nDifficulty set: word length = %d, max tries = %d\n",
              g.word_length, g.max_tries);
@@ -96,8 +97,6 @@ int main()
       running = 0;
     }
   }
-
-  return 0;
 }
 
 void title()
@@ -130,15 +129,17 @@ void play_easy(Game *g)
   int col = g->max_tries;
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
-  printf("\n+---+---+---+\n");
-  printf("|   |   |   |\n");
-  printf("+---+---+---+\n");
-  printf("|   |   |   |\n");
-  printf("+---+---+---+\n");
-  printf("|   |   |   |\n");
-  printf("+---+---+---+\n");
-  printf("|   |   |   |\n");
-  printf("+---+---+---+\n");
+  printf("\n+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+\n");
   
   play_loop(g);
   
@@ -156,17 +157,19 @@ void play_medium(Game *g)
   int col = g->max_tries;
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
-  printf("\n+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+\n");
+  printf("\n+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+\n");
   
   play_loop(g);
    
@@ -183,19 +186,19 @@ void play_hard(Game *g)
   int col = g->max_tries;
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
-  printf("\n+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+---+---+---+\n");
-  printf("|   |   |   |   |   |   |   |   |\n");
-  printf("+---+---+---+---+---+---+---+---+\n");
+  printf("\n+---+---+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+---+---+\n");
+  printf("|   |   |   |   |   |   |   |   |   |   |\n");
+  printf("+---+---+---+---+---+---+---+---+---+---+\n");
   
   play_loop(g);
   
@@ -286,7 +289,7 @@ void read_attempt(char *guess, Game *g)
       continue;
     } // error check for special chars, spaces, numbers in guess 
 
-    lowercase(guess);
+    uppercase(guess);
     return;
   }
 }
@@ -329,14 +332,14 @@ void print_guess_row(char *guess, Game *g)
   printf("\n");
 }
 
-void lowercase(char *s)
+void uppercase(char *s)
 {
   size_t i;
   if (s == NULL) return;
   for (i = 0; s[i] != '\0'; ++i)
   {
     // cast to unsigned char to avoid UB for negative chars
-    s[i] = (char)tolower((unsigned char)s[i]);
+    s[i] = (char)toupper((unsigned char)s[i]);
   }
 }
 
