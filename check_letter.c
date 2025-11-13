@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h> 
 #include "colors.h"
-#include "functions.h"
 
 #define FIVE 5
 
@@ -47,18 +46,4 @@ int print_color(int colors[], char guess[]){
     }
   }
   printf("\n");
-}
-
-
-int main() {
-
-	int colors[FIVE];
-	char guess[6];
-	char answer[6]; 
-	strcpy(guess, "APPLE");
-	strcpy(answer, "APPLE");
-	check_letter(guess, answer, colors);
-	print_color(colors, guess); 
-  return 0;
-
 }
