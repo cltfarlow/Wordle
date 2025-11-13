@@ -1,6 +1,12 @@
-#ifndef CHECK_LETTER_H   // include guard start
-#define CHECK_LETTER_H
+#ifndef FUNCTIONS_H   // include guard start
+#define FUNCTIONS_H
 
+
+typedef struct
+{
+  int word_length;
+  int max_tries;
+} Game;
 void check_letter(const char guess[], const char answer[], int colors[]);
 
 void print_color(int colors[], char guess[]); 
