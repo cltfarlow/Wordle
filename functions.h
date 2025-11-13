@@ -6,6 +6,7 @@ typedef struct
 {
   int word_length;
   int max_tries;
+  char word_list[];
 } Game;
 void check_letter(const char guess[], const char answer[], int colors[]);
 

@@ -12,7 +12,7 @@
   References: notes, google
 */
 
-void main()
+int main()
 {
   Game g;
   int difficulty = 1; //default 
@@ -41,6 +41,8 @@ void main()
         {
           g.word_length = 5; 
           g.max_tries = 6;
+          initArray(g.word_list, FIVE_LETTER_LEN, FIVE);
+          printf("%c", g.word_list[12]); //debug
           play_easy(&g);
           break;
         } case 2:

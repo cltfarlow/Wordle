@@ -228,6 +228,7 @@ void play_loop(Game *g)
     {
       break; 
     } 
+    
 
     strcpy(board[attempt], guess); 
     //store guess
