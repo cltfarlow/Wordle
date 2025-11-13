@@ -22,6 +22,12 @@ References: ChatGPT, https://www.geeksforgeeks.org/c/get-a-substring-in-c/
 /*Amount of words in TenLetterWords.txt*/
 #define TEN_LETTER_LEN 45873
 
+#define FIVE_PATH "FiveLetterWords.txt"
+#define SMALLER_FIVE_PATH "SmallerFiveLetterWords.txt"
+#define EIGHT_PATH "EightLetterWords.txt"
+#define TEN_PATH "TenLetterWords.txt"
+
+
 int isValidWord(char bigA[], char guess[], int row, int col);
 int initArray(char bigA[], int row, int col);
 void generateRandWord(char word[], char bigA[], int row, int col);
@@ -66,16 +72,16 @@ int initArray(char bigA[], int row, int col){
     switch(col){
         case FIVE:
             if(row==SMALLER_FIVE_LETTER_LEN){
-                filePointer = fopen("SmallerFiveLetterWords.txt", "r");
+                filePointer = fopen(SMALLER_FIVE_PATH, "r");
             }else{
-                filePointer = fopen("FiveLetterWords.txt", "r");
+                filePointer = fopen(FIVE_PATH, "r");
             }
             break;
         case EIGHT:
-            filePointer = fopen("EightLetterWords.txt", "r");
+            filePointer = fopen(EIGHT_PATH, "r");
             break;
         case TEN:
-            filePointer = fopen("TenLetterWords.txt", "r");
+            filePointer = fopen(TEN_PATH, "r");
             break;
     }
     if(filePointer == NULL){
