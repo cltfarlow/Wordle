@@ -15,7 +15,7 @@
 int main()
 {
   Game g;
-  int difficulty = 1; //default 
+  int difficulty = 1; //default
   g.word_length = 5;
   g.max_tries = 6;
   int running = 1;
@@ -39,9 +39,10 @@ int main()
       {
         case 1: 
         {
+          char bigA[FIVE_LETTER_LEN*FIVE];
           g.word_length = 5; 
           g.max_tries = 6;
-          initArray(g.word_list, FIVE_LETTER_LEN, FIVE);
+          if(initArray(bigA, FIVE_LETTER_LEN, FIVE)) return 1;
           printf("%c", g.word_list[12]); //debug
           play_easy(&g);
           break;
