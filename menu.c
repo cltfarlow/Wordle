@@ -2,7 +2,10 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include "functions.h"
+#include "play.h"
+#include "CheckWord.h"
+#include "check_letter.h"
+#include "colors.h"
 
 /*
   File: Menu.c

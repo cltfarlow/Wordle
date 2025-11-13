@@ -2,7 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include "functions.h"
 
 /*
   File: Menu.c
