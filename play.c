@@ -16,6 +16,8 @@ typedef struct
 {
   int word_length;
   int max_tries;
+  char answer[TEN+1];
+  char word_list[EIGHT_LETTER_LEN*TEN];
 } Game;
 
 void title();
@@ -171,10 +173,9 @@ void play_loop(Game *g, int colors[])
       break; 
     } 
     
-    for (k = 0; k < g->word_length; k++)
-      {
-        colors[k] = 0; //default gray back ground
-      }
+    
+
+
     strcpy(board[attempt], guess); 
     //store guess
     {
@@ -208,6 +209,19 @@ void play_loop(Game *g, int colors[])
 void read_attempt(char *guess, Game *g)
 {
   int length;
+  int totalPossibleWords;
+
+  switch(g->word_length){
+    case FIVE:
+      totalPossibleWords = FIVE_LETTER_LEN;
+      break;
+    case EIGHT:
+      totalPossibleWords = EIGHT_LETTER_LEN;
+      break;
+    case TEN:
+      totalPossibleWords = TEN_LETTER_LEN;
+      break;
+  }
 
   while (1)
   {
