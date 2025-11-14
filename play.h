@@ -13,6 +13,7 @@ typedef struct
 {
   int word_length;
   int max_tries;
+  char answer[TEN+1];
   char word_list[EIGHT_LETTER_LEN*TEN];
 } Game;
 

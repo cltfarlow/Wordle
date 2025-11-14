@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-
+#include "CheckWord.h"
 /*
   File: Menu.c
   Author: Emilina Salazar
@@ -15,6 +15,8 @@ typedef struct
 {
   int word_length;
   int max_tries;
+  char answer[TEN+1];
+  char word_list[EIGHT_LETTER_LEN*TEN];
 } Game;
 
 void title();
@@ -161,6 +163,8 @@ void play_loop(Game *g)
       break; 
     } 
     
+    
+
 
     strcpy(board[attempt], guess); 
     //store guess
@@ -195,6 +199,19 @@ void play_loop(Game *g)
 void read_attempt(char *guess, Game *g)
 {
   int length;
+  int totalPossibleWords;
+
+  switch(g->word_length){
+    case FIVE:
+      totalPossibleWords = FIVE_LETTER_LEN;
+      break;
+    case EIGHT:
+      totalPossibleWords = EIGHT_LETTER_LEN;
+      break;
+    case TEN:
+      totalPossibleWords = TEN_LETTER_LEN;
+      break;
+  }
 
   while (1)
   {
@@ -221,6 +238,11 @@ void read_attempt(char *guess, Game *g)
       printf("\nInvalid input, letters A-Z only (no numbers or symbols).\n");
       continue;
     } // error check for special chars, spaces, numbers in guess 
+
+    if(!isValidWord(g->word_list, guess, totalPossibleWords, g->word_length)){
+      printf("\nNot a valid word\n");
+      continue;
+    }//Check if it's a valid word
 
     uppercase(guess);
     return;
