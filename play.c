@@ -150,7 +150,6 @@ void play_loop(Game *g, int colors[])
   char guess[50];
   char board[10][50]; 
   int color_board[10][50];
-  int colors
   int attempt;
   int i, k;
 
