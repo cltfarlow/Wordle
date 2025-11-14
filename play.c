@@ -25,7 +25,8 @@ void play_hard(Game *g);
 void play_loop(Game *g);
 void read_attempt(char *guess, Game *g);
 void print_sep(Game *g);
-void print_guess_row(char *guess, Game *g);
+void print_guess_row(char *guess, int colors[], Game *g);
+void print_color(int colors[], char guess[], Game *g);
 void uppercase(char *s);
 int all_letters(char *s);
 void clear_line();
@@ -144,13 +145,19 @@ void play_loop(Game *g)
 {
   char guess[50];
   char board[10][50]; 
+  int color_board[10][50];
+  int colors
   int attempt;
-  int i;
+  int i, k;
 
   
   for (i = 0; i < g->max_tries; i++)
   {
     board[i][0] = '\0';
+    for (k = 0; k < g->word_length; k++)
+      {
+        color_board[i][k] = -1;
+      }
   } //initilized board with empty guesses
 
   for (attempt = 0; attempt < g->max_tries; attempt++)
@@ -161,7 +168,10 @@ void play_loop(Game *g)
       break; 
     } 
     
-
+    for (k = 0; k < g->word_length; k++)
+      {
+        colors[k] = 0; //default gray back ground
+      }
     strcpy(board[attempt], guess); 
     //store guess
     {
@@ -179,11 +189,11 @@ void play_loop(Game *g)
       {
         if (board[i][0] != '\0')
         {
-          print_guess_row(board[i], g);
+          print_guess_row(board[i], color_board[i], g);
         }
         else
         {
-          print_guess_row(empty, g); 
+          print_guess_row(empty, color_board[i], g); 
         } // print empty rows
         print_sep(g);
       }
@@ -220,8 +230,7 @@ void read_attempt(char *guess, Game *g)
     {
       printf("\nInvalid input, letters A-Z only (no numbers or symbols).\n");
       continue;
-    } // error check for special chars, spaces, numbers in guess 
-
+    } // error check for special chars, spaces, numbers in guess
     uppercase(guess);
     return;
   }
@@ -339,4 +348,5 @@ int get_int_choice(char *prompt, int min_value, int max_value)
   clear_line();
   return value;
 }
+
 
