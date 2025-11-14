@@ -3,7 +3,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include "colors.h"
-
 /*
   File: Menu.c
   Author: Emilina Salazar
