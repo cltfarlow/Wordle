@@ -234,13 +234,8 @@ void read_attempt(char *guess, Game *g)
     {
       printf("\nInvalid input, letters A-Z only (no numbers or symbols).\n");
       continue;
-<<<<<<< HEAD
     } // error check for special chars, spaces, numbers in guess 
 
-=======
-    } // error check for special chars, spaces, numbers in guess
-    uppercase(guess);
->>>>>>> 2d438ddb2b1be1b7b0bd7837c5a84ea7197d0089
     return;
   }
 }
