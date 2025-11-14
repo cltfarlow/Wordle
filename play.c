@@ -189,7 +189,7 @@ void play_loop(Game *g, int colors[])
         empty[k] = ' ';
       }
       empty[g->word_length] = '\0';
-      check_letter(guess, colors, g); 
+      check_letter(guess, colors, *g); 
       print_sep(g);
       for (i = 0; i < g->max_tries; i++)
       {
@@ -312,7 +312,7 @@ void print_guess_row(char *guess, int colors[], Game *g)
   printf("\n");
 }
 
-void print_color(int colors[], char guess[], Game *g);
+void print_color(int colors[], char guess[], Game *g)
 {
   print_sep(g);
   print_guess_row(guess, colors, g);

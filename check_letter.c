@@ -78,25 +78,3 @@ void check_letter(char guess[], int colors[], Game g) {
 }
 
 //TEXT
-
-
-
-int print_color(int colors[], char guess[]){
-  int i; 
-  printf("\n----------------------------------------------");
-  printf("\n");
-  for(i = 0; i < FIVE; i++){
-    switch (colors[i]){ 
-    case 0: 
-      printf(GREY_BG WHITE_TXT BOLD_TXT " %c " RESET, guess[i]); 
-      break; 
-    case 1: 
-      printf(YELLOW_BG WHITE_TXT BOLD_TXT " %c " RESET, guess[i]); 
-      break;
-    case 2: 
-      printf(GREEN_BG WHITE_TXT BOLD_TXT " %c " RESET, guess[i]); 
-      break; 
-    }
-  }
-  printf("\n");
-}
