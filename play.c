@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include "colors.h"
+#include "CheckWord.h"
+
 /*
   File: Menu.c
   Author: Emilina Salazar
