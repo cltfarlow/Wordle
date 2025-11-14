@@ -6,6 +6,16 @@
 #include "CheckWord.h"
 
 
+/* 
+
+  File: check_letter.c
+  Author: Max Klein
+  Assignment: Wordle Project 11/22/2025
+  Date: 11/22/2025
+  References: notes, google
+
+*/
+
 void check_letter(const char guess[], int colors[], Game g) {
 	int i; 
   int j;
