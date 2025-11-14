@@ -2,7 +2,10 @@
 #include <stdio.h>
 #include <string.h> 
 #include "colors.h"
-#include "functions.h"
+#include "play.h"
+#include "CheckWord.h"
+
+
 void check_letter_(const char guess[], const char answer[], int colors[], Game *g) {
 	int i; 
   int j;
@@ -86,18 +89,4 @@ int print_color(int colors[], char guess[]){
     }
   }
   printf("\n");
-}
-
-
-int main() {
-
-	int colors[FIVE];
-	char guess[6];
-	char answer[6]; 
-	strcpy(guess, "APPLE");
-	strcpy(answer, "APPLE");
-	check_letter(guess, answer, colors);
-	print_color(colors, guess); 
-  return 0;
-
 }

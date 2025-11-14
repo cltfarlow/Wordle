@@ -2,7 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include "functions.h"
 
 /*
   File: Menu.c
@@ -31,73 +30,6 @@ void uppercase(char *s);
 int all_letters(char *s);
 void clear_line();
 int  get_int_choice(char *prompt, int min_val, int max_val);
-
-
-void main()
-{
-  Game g;
-  int difficulty = 1; //default 
-  g.word_length = 5;
-  g.max_tries = 6;
-  int running = 1;
-
-  title();
-  
-  while (running)
-  {
-    int choice;
-    printf("\n=========== MAIN  MENU ===========\n");
-    printf(" 1) Play\n");
-    printf(" 2) Rules\n");
-    printf(" 3) Change difficulty\n");
-    printf(" 4) Quit\n");
-    printf("==================================\n");
-    choice = get_int_choice("> ", 1, 4);
-
-    if (choice == 1)
-    {
-      switch (difficulty)
-      {
-        case 1: 
-        {
-          g.word_length = 5; 
-          g.max_tries = 6;
-          play_easy(&g);
-          break;
-        } case 2:
-        {
-          g.word_length = 8; 
-          g.max_tries = 6;
-          play_medium(&g);
-          break;
-        } case 3:
-        {
-          g.word_length = 10; 
-          g.max_tries = 6;
-          play_hard(&g);
-          break;
-        }
-      }
-    }
-    else if (choice == 2)
-    {
-      rules(&g);
-    }
-    else if (choice == 3)
-    {
-      difficulty = get_int_choice(
-          "\nChoose difficulty:\n  1: Easy - 5 letter words with 6 tries\n  2: Medium - 8 letter word with 6 tires\n  3: Hard - 10 letter word with 6 tries\n> ",
-          1, 3);
-      printf("\nDifficulty set: word length = %d, max tries = %d\n",
-             g.word_length, g.max_tries);
-    }
-    else
-    {
-      printf("\nGoodbye!\n");
-      running = 0;
-    }
-  }
-}
 
 void title()
 {
@@ -309,7 +241,7 @@ void print_sep(Game *g)
   printf("+\n");
 }
 
-void print_guess_row(char *guess, Game *g)
+void print_guess_row(char *guess, int colors[], Game *g)
 {
   int i;
   int n = g->word_length;
@@ -328,10 +260,36 @@ void print_guess_row(char *guess, Game *g)
       ch = ' ';
     }
 
-    printf(" %c |", (char)toupper((unsigned char)ch));
+    ch = (char)toupper((unsigned char)ch);
+
+    switch (colors[i])
+    {
+    case 0:
+      printf(GREY_BG WHITE_TXT BOLD_TXT " %c " RESET, ch);
+      break;
+    case 1:
+      printf(YELLOW_BG WHITE_TXT BOLD_TXT " %c " RESET, ch);
+      break;
+    case 2:
+      printf(GREEN_BG WHITE_TXT BOLD_TXT " %c " RESET, ch);
+      break;
+    default:
+      /* fall back to no color if colors[i] is something else */
+      printf(" %c ", ch);
+      break;
+    }
+
+    printf("|");
   }
   printf("\n");
 }
+
+void print_color(int colors[], char guess[], Game *g)
+{
+  print_sep(g);
+  print_guess_row(guess, colors, g);
+}
+
 
 void uppercase(char *s)
 {
@@ -381,3 +339,4 @@ int get_int_choice(char *prompt, int min_value, int max_value)
   clear_line();
   return value;
 }
+
