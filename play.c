@@ -312,7 +312,7 @@ void print_guess_row(char *guess, int colors[], Game *g)
   printf("\n");
 }
 
-void print_color(int colors[], char guess[], Game *g)
+void print_color(int colors[], char guess[], Game *g);
 {
   print_sep(g);
   print_guess_row(guess, colors, g);
@@ -367,5 +367,6 @@ int get_int_choice(char *prompt, int min_value, int max_value)
   clear_line();
   return value;
 }
+
 
 
