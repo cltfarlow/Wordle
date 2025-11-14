@@ -2,6 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include "colors.h"
 
 /*
   File: Menu.c
@@ -57,6 +58,7 @@ void rules(Game *g)
 void play_easy(Game *g)
 {
   char line[64];
+  int colors_FIVE[5];
   int row = g->word_length;
   int col = g->max_tries;
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
@@ -73,7 +75,7 @@ void play_easy(Game *g)
   printf("|   |   |   |   |   |\n");
   printf("+---+---+---+---+---+\n");
   
-  play_loop(g);
+  play_loop(g, colors_FIVE);
   
   printf("\nPress Enter to return to the main menu...");
   if (fgets(line, sizeof(line), stdin) == NULL)
@@ -85,6 +87,7 @@ void play_easy(Game *g)
 void play_medium(Game *g)
 {
   char line[64];
+  int colors_EIGHT[8];
   int row = g->word_length;
   int col = g->max_tries;
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
@@ -103,7 +106,7 @@ void play_medium(Game *g)
   printf("|   |   |   |   |   |   |   |   |\n");
   printf("+---+---+---+---+---+---+---+---+\n");
   
-  play_loop(g);
+  play_loop(g, colors_EIGHT);
    
   printf("\nPress Enter to return to the main menu...");
   if (fgets(line, sizeof(line), stdin) == NULL)
@@ -114,6 +117,7 @@ void play_medium(Game *g)
 void play_hard(Game *g)
 {
   char line[64];
+  int colors_TEN[10];
   int row = g->word_length;
   int col = g->max_tries;
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
@@ -132,7 +136,7 @@ void play_hard(Game *g)
   printf("|   |   |   |   |   |   |   |   |   |   |\n");
   printf("+---+---+---+---+---+---+---+---+---+---+\n");
   
-  play_loop(g);
+  play_loop(g, colors_TEN);
   
   printf("\nPress Enter to return to the main menu...");
   if (fgets(line, sizeof(line), stdin) == NULL)
@@ -140,7 +144,7 @@ void play_hard(Game *g)
   }
 }
 
-void play_loop(Game *g)
+void play_loop(Game *g, int colors[])
 {
   char guess[50];
   char board[10][50]; 
@@ -173,7 +177,7 @@ void play_loop(Game *g)
         empty[k] = ' ';
       }
       empty[g->word_length] = '\0';
-
+      check_letter(guess, colors, g); 
       print_sep(g);
       for (i = 0; i < g->max_tries; i++)
       {
@@ -222,7 +226,6 @@ void read_attempt(char *guess, Game *g)
       continue;
     } // error check for special chars, spaces, numbers in guess 
 
-    uppercase(guess);
     return;
   }
 }
