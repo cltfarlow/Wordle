@@ -64,6 +64,9 @@ void check_letter_(const char guess[], const char answer[], int colors[], Game *
   }
 }
 
+//TEXT
+
+
 
 int print_color(int colors[], char guess[]){
   int i; 
