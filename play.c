@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "CheckWord.h"
 #include "colors.h"
+#include "check_letter.h"
 
 /*
   File: Menu.c
@@ -26,7 +27,7 @@ void rules(Game *g);
 void play_easy(Game *g);
 void play_medium(Game *g);
 void play_hard(Game *g);
-void play_loop(Game *g);
+void play_loop(Game *g, int colors[]);
 void read_attempt(char *guess, Game *g);
 void print_sep(Game *g);
 void print_guess_row(char *guess, int colors[], Game *g);
