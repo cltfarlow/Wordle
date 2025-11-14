@@ -1,11 +1,19 @@
 #ifndef PLAY_H
 #define PLAY_H
 
+#define FIVE 5
+#define FIVE_LETTER_LEN 15933
+#define SMALLER_FIVE_LETTER_LEN 2274
+#define EIGHT 8
+#define EIGHT_LETTER_LEN 51628
+#define TEN 10
+#define TEN_LETTER_LEN 45873
+
 typedef struct
 {
   int word_length;
   int max_tries;
-  char word_list[];
+  char word_list[EIGHT_LETTER_LEN*TEN];
 } Game;
 
 void title();

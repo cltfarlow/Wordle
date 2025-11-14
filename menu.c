@@ -22,7 +22,6 @@ int main()
   g.word_length = 5;
   g.max_tries = 6;
   int running = 1;
-
   title();
   
   while (running)
@@ -42,23 +41,27 @@ int main()
       {
         case 1: 
         {
-          char bigA[FIVE_LETTER_LEN*FIVE];
-          g.word_length = 5; 
+          g.word_length = FIVE; 
           g.max_tries = 6;
-          if(initArray(bigA, FIVE_LETTER_LEN, FIVE)) return 1;
+          int color[FIVE];
+          if(initArray(g.word_list, FIVE_LETTER_LEN, FIVE)) return 1;
           printf("%c", g.word_list[12]); //debug
           play_easy(&g);
           break;
         } case 2:
         {
+          int color[EIGHT];
           g.word_length = 8; 
           g.max_tries = 6;
+          if(initArray(g.word_list, EIGHT_LETTER_LEN, EIGHT)) return 1;
           play_medium(&g);
           break;
         } case 3:
         {
+          int color[TEN];
           g.word_length = 10; 
           g.max_tries = 6;
+          if(initArray(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
           play_hard(&g);
           break;
         }
