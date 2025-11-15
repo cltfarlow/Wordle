@@ -22,7 +22,7 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
   for (i = 0; i < word_length; i++){
     colors[i] = 0;
   }
-    switch(g.word_length){
+    switch(word_length){
       case 5: 
       int check_duplicates_FIVE[FIVE] = {0};
       for (i = 0; i < word_length; i++){
@@ -77,4 +77,24 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
     }
   }
 
+
+  int print_color(int colors[], char guess[]){
+  int i; 
+  printf("\n----------------------------------------------");
+  printf("\n");
+  for(i = 0; i < FIVE; i++){
+    switch (colors[i]){ 
+    case 0: 
+      printf(GREY_BG WHITE_TXT BOLD_TXT " %c " RESET, guess[i]); 
+      break; 
+    case 1: 
+      printf(YELLOW_BG WHITE_TXT BOLD_TXT " %c " RESET, guess[i]); 
+      break;
+    case 2: 
+      printf(GREEN_BG WHITE_TXT BOLD_TXT " %c " RESET, guess[i]); 
+      break; 
+    }
+  }
+  printf("\n");
+}
 //TEXT
