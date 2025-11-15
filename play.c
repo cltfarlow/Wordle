@@ -66,6 +66,10 @@ void play_easy(Game *g)
   int colors_FIVE[5];
   int row = g->word_length;
   int col = g->max_tries;
+  char tempArr[SMALLER_FIVE_LETTER_LEN*FIVE];
+  initArray(tempArr, SMALLER_FIVE_LETTER_LEN, FIVE);
+  //TODO: this doesn't work?
+  generateRandWord(g->answer, tempArr, SMALLER_FIVE_LETTER_LEN, FIVE);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
   printf("\n+---+---+---+---+---+\n");
@@ -95,6 +99,7 @@ void play_medium(Game *g)
   int colors_EIGHT[8];
   int row = g->word_length;
   int col = g->max_tries;
+  generateRandWord(g->answer, g->word_list, EIGHT_LETTER_LEN, g->word_length);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
   printf("\n+---+---+---+---+---+---+---+---+\n");
@@ -125,6 +130,7 @@ void play_hard(Game *g)
   int colors_TEN[10];
   int row = g->word_length;
   int col = g->max_tries;
+  generateRandWord(g->answer, g->word_list, TEN_LETTER_LEN, g->word_length);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
   printf("\n+---+---+---+---+---+---+---+---+---+---+\n");
@@ -251,12 +257,13 @@ void read_attempt(char *guess, Game *g)
       continue;
     } // error check for special chars, spaces, numbers in guess 
 
-    return;
-
+    //TODO: change this to work (needs lowercase)
     if(!isValidWord(g->word_list, guess, totalPossibleWords, g->word_length)){
       printf("\nNot a valid word\n");
       continue;
     }//Check if it's a valid word
+
+    return;
 
   }
 }
@@ -295,7 +302,7 @@ void print_guess_row(char *guess, int colors[], Game *g)
     }
 
     ch = (char)toupper((unsigned char)ch);
-
+    /*print_color2(colors, guess);*/
     switch (colors[i])
     {
     case 0:
