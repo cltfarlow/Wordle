@@ -21,6 +21,7 @@ void check_letter(char guess[], int colors[], Game g) {
   int j;
   for (i = 0; i < g.word_length; i++){
     colors[i] = 0;
+  }
     switch(g.word_length){
       case 5: 
       int check_duplicates_FIVE[FIVE] = {0};
@@ -75,6 +76,5 @@ void check_letter(char guess[], int colors[], Game g) {
       break;
     }
   }
-}
 
 //TEXT
