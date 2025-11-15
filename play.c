@@ -189,7 +189,7 @@ void play_loop(Game *g, int colors[])
         empty[k] = ' ';
       }
       empty[g->word_length] = '\0';
-      check_letter(guess, colors, *g); 
+      check_letter(guess, colors, g->answer, g->word_length); 
       print_sep(g);
       for (i = 0; i < g->max_tries; i++)
       {
@@ -252,6 +252,12 @@ void read_attempt(char *guess, Game *g)
     } // error check for special chars, spaces, numbers in guess 
 
     return;
+
+    if(!isValidWord(g->word_list, guess, totalPossibleWords, g->word_length)){
+      printf("\nNot a valid word\n");
+      continue;
+    }//Check if it's a valid word
+    
   }
 }
 
