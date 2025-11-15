@@ -22,8 +22,8 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
   for (i = 0; i < word_length; i++){
     colors[i] = 0;
   }
-    switch(g.word_length){
-      case 5: 
+    switch(word_length){
+      case 5: {
       int check_duplicates_FIVE[FIVE] = {0};
       for (i = 0; i < word_length; i++){
 		    if (guess[i] == answer[i]) {
@@ -40,7 +40,8 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
         }
       }
       break; 
-      case 8: 
+      }
+      case 8: {
         int check_duplicates_EIGHT[EIGHT] = {0};
       	for (i = 0; i < word_length; i++){
 		      if (guess[i] == answer[i]) {
@@ -57,7 +58,8 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
           }
         }
       break;
-      case 10:
+      }
+      case 10:{
         int check_duplicates_TEN[TEN] = {0};
         for (i = 0; i < word_length; i++){
 		      if (guess[i] == answer[i]) {
@@ -74,6 +76,7 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
           }
         }
       break;
+      }
     }
   }
 

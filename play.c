@@ -257,7 +257,7 @@ void read_attempt(char *guess, Game *g)
       printf("\nNot a valid word\n");
       continue;
     }//Check if it's a valid word
-    
+
   }
 }
 
@@ -308,7 +308,7 @@ void print_guess_row(char *guess, int colors[], Game *g)
       printf(GREEN_BG WHITE_TXT BOLD_TXT " %c " RESET, ch);
       break;
     default:
-      /* fall back to no color if colors[i] is something else */
+      /*fall back to no color if colors[i] is something else*/
       printf(" %c ", ch);
       break;
     }
