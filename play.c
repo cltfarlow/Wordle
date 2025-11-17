@@ -194,7 +194,7 @@ void play_loop(Game *g, int colors[])
         empty[k] = ' ';
       }
       empty[g->word_length] = '\0';
-      check_letter(guess, colors, g->answer, g->word_length); 
+      check_letter(guess, color_board[i], g->answer, g->word_length); 
       print_sep(g);
       for (i = 0; i < g->max_tries; i++)
       {
@@ -301,6 +301,7 @@ void print_guess_row(char *guess, int colors[], Game *g)
 
     ch = (char)toupper((unsigned char)ch);
     /*print_color2(colors, guess);*/
+    printf("%d",colors[i]);
     switch (colors[i])
     {
     case 0:
