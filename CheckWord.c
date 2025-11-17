@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <time.h>
 /*
 File: CheckWord.c
 Author: Christopher Farlow
@@ -118,6 +119,7 @@ Note: for 5 letter words, pass the smaller array as bigA, and use smaller_arr_le
 */
 void generateRandWord(char word[], char bigA[], int row, int col){
     int i, index;
+    srand(time(0)*3000);
     index = rand()%row;
     strncpy(word, bigA+index*col, col);
 }
