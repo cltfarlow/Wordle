@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 /*
 File: CheckWord.c
 Author: Christopher Farlow
@@ -43,9 +44,17 @@ Arguments:
 @row: amount of words in bigA
 @col: amount of characters in words
 */
-int isValidWord(char bigA[], char guess[], int row, int col){
-    int left = 0, right = row, mid, cmp;
+int isValidWord(char bigA[], char givenGuess[], int row, int col){
+    char guess[col+2];
+    int left = 0, right = row, mid, cmp, i;
     char word[col];
+    
+    /*convert guess to lowercase*/
+    strcpy(guess, givenGuess);
+    for(i = 0; i<col; i++){
+        guess[i] = tolower(guess[i]);
+    }
+
     while(left<=right){
         mid = left+(right-left)/2;
         strncpy(word, bigA+mid*col, col);

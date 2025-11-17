@@ -100,4 +100,3 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
   }
   printf("\n");
 }
-//TEXT

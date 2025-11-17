@@ -68,7 +68,6 @@ void play_easy(Game *g)
   int col = g->max_tries;
   char tempArr[SMALLER_FIVE_LETTER_LEN*FIVE];
   initArray(tempArr, SMALLER_FIVE_LETTER_LEN, FIVE);
-  //TODO: this doesn't work?
   generateRandWord(g->answer, tempArr, SMALLER_FIVE_LETTER_LEN, FIVE);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
@@ -163,7 +162,7 @@ void play_loop(Game *g, int colors[])
   int attempt;
   int i, k;
 
-  
+  printf("Answer in play: %s\n", g->answer); /*debug*/
   for (i = 0; i < g->max_tries; i++)
   {
     board[i][0] = '\0';
@@ -171,7 +170,7 @@ void play_loop(Game *g, int colors[])
       {
         color_board[i][k] = -1;
       }
-  } //initilized board with empty guesses
+  } /*initilized board with empty guesses*/
 
   for (attempt = 0; attempt < g->max_tries; attempt++)
   {
@@ -185,7 +184,7 @@ void play_loop(Game *g, int colors[])
 
 
     strcpy(board[attempt], guess); 
-    //store guess
+    /*store guess*/
     {
       char empty[50];
       int k;
@@ -206,7 +205,7 @@ void play_loop(Game *g, int colors[])
         else
         {
           print_guess_row(empty, color_board[i], g); 
-        } // print empty rows
+        } /* print empty rows*/
         print_sep(g);
       }
     }
@@ -243,25 +242,24 @@ void read_attempt(char *guess, Game *g)
 
     length = strcspn(guess, "\n");
     guess[length] = '\0';
-    //get rid of new line char 
+    /*get rid of new line char */
     
     if ((int)strlen(guess) != g->word_length)
     {
       printf("\nInvalid input, please enter exactly %d letters.\n", g->word_length);
       continue;
-    } // guess length must match exactly
+    } /* guess length must match exactly*/
 
     if (!all_letters(guess))
     {
       printf("\nInvalid input, letters A-Z only (no numbers or symbols).\n");
       continue;
-    } // error check for special chars, spaces, numbers in guess 
+    } /* error check for special chars, spaces, numbers in guess */
 
-    //TODO: change this to work (needs lowercase)
     if(!isValidWord(g->word_list, guess, totalPossibleWords, g->word_length)){
       printf("\nNot a valid word\n");
       continue;
-    }//Check if it's a valid word
+    }/*Check if it's a valid word*/
 
     return;
 
@@ -338,7 +336,7 @@ void uppercase(char *s)
   if (s == NULL) return;
   for (i = 0; s[i] != '\0'; ++i)
   {
-    // cast to unsigned char to avoid UB for negative chars
+    /* cast to unsigned char to avoid UB for negative chars */
     s[i] = (char)toupper((unsigned char)s[i]);
   }
 }
@@ -350,7 +348,7 @@ int all_letters(char *s)
   {
     unsigned char ch = (unsigned char)s[i];
     if (!isalpha(ch)) return 0;  
-  }// reject digits/symbols/space 
+  }/* reject digits/symbols/space  */
   return 1;
 }
 
