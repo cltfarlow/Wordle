@@ -208,10 +208,14 @@ void play_loop(Game *g, int colors[])
         } /* print empty rows*/
         print_sep(g);
       }
-    }
+      if (strcmp(g->answer, guess) == 0)
+      {
+        printf("\ncongragulations you won!");
+        return; 
+      }
   }
 }
-
+}
 
 void read_attempt(char *guess, Game *g)
 {
