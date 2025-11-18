@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "CheckWord.h"
 #include "colors.h"
-#include "check_letter.h"
+#include "Input.h"
 
 /*
   File: Menu.c
@@ -146,7 +146,7 @@ void play_loop(Game *g, int colors[])
 
   for (attempt = 0; attempt < g->max_tries; attempt++)
   {
-    read_attempt(guess, g);
+    read_attempt(guess, g->word_length, g->word_list);
     if (guess[0] == '\0')
     {
       break; 
@@ -189,27 +189,9 @@ void play_loop(Game *g, int colors[])
 }
 }
 
-void uppercase(char *s)
-{
-  size_t i;
-  if (s == NULL) return;
-  for (i = 0; s[i] != '\0'; ++i)
-  {
-    /* cast to unsigned char to avoid UB for negative chars */
-    s[i] = (char)toupper((unsigned char)s[i]);
-  }
-}
 
-int all_letters(char *s)
-{
-  int i;
-  for (i = 0; s[i] != '\0'; i++)
-  {
-    unsigned char ch = (unsigned char)s[i];
-    if (!isalpha(ch)) return 0;  
-  }/* reject digits/symbols/space  */
-  return 1;
-}
+
+
 
 void clear_line()
 {
@@ -219,24 +201,6 @@ void clear_line()
   }
 }
 
-int get_int_choice(char *prompt, int min_value, int max_value)
-{
-  int value;
-  int scan;
-  
-  printf("%s", prompt);
-  scan = scanf("%d", &value);
-
-  while (scan != 1 || value < min_value || value > max_value)
-  {
-    printf("\nInvalid input. Enter a number between %d and %d: ", min_value, max_value);
-    clear_line();
-    scan = scanf("%d", &value);
-  }
-
-  clear_line();
-  return value;
-}
 
 
 
