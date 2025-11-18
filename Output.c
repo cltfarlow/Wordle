@@ -1,17 +1,30 @@
 #include <string.h>
 #include <stdio.h>
+<<<<<<< HEAD
 #include <ctype.h>
 #include "Definitions.h"
 
+=======
+#include "Definitions.h"
+>>>>>>> b825c9030803690e06542e457bfeefcae86e2e60
 
-void print_sep(Game *g);
-void print_guess_row(char *guess, int colors[], Game *g);
-void print_color(int colors[], char guess[], Game *g);
+void print_sep(int word_length);
+void print_guess_row(char *guess, int colors[], int word_length);
+void print_color(int colors[], char guess[], int word_length);
+void clear_line();
 
-void print_sep(Game *g)
+void clear_line()
+{
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF)
+  {
+  }
+}
+
+void print_sep(int word_length)
 {
   int i;
-  int n = g->word_length;
+  int n = word_length;
 
   putchar('\n');
   for (i = 0; i < n; i++)
@@ -21,10 +34,10 @@ void print_sep(Game *g)
   printf("+\n");
 }
 
-void print_guess_row(char *guess, int colors[], Game *g)
+void print_guess_row(char *guess, int colors[], int word_length)
 {
   int i;
-  int n = g->word_length;
+  int n = word_length;
 
   printf("|");
   for (i = 0; i < n; i++)
@@ -64,8 +77,8 @@ void print_guess_row(char *guess, int colors[], Game *g)
   printf("\n");
 }
 
-void print_color(int colors[], char guess[], Game *g)
+void print_color(int colors[], char guess[], int word_length)
 {
-  print_sep(g);
-  print_guess_row(guess, colors, g);
+  print_sep(word_length);
+  print_guess_row(guess, colors, word_length);
 }
