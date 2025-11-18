@@ -26,13 +26,8 @@ void play_easy(Game *g);
 void play_medium(Game *g);
 void play_hard(Game *g);
 void play_loop(Game *g, int colors[]);
-
-void uppercase(char *s);
-int all_letters(char *s);
-void clear_line();
-int  get_int_choice(char *prompt, int min_val, int max_val);
-
 void play_easy(Game *g)
+
 {
   char line[64];
   int colors_FIVE[5];
@@ -190,16 +185,6 @@ void play_loop(Game *g, int colors[])
 }
 
 
-
-
-
-void clear_line()
-{
-  int c;
-  while ((c = getchar()) != '\n' && c != EOF)
-  {
-  }
-}
 
 
 
