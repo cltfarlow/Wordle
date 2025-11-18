@@ -1,5 +1,4 @@
 #ifndef DEFINITIONS_H
-#define DEFINITIONS_H
 
 #define RESET "\033[0m"
 

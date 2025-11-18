@@ -3,7 +3,7 @@ CFLAGS = -Wall -ansi -g
 
 TARGET = Wordle
 
-SRC = menu.c play.c check_letter.c CheckWord.c
+SRC = menu.c play.c Input.c CheckWord.c Output.c
 
 OBJ = $(SRC:.c=.o)
 

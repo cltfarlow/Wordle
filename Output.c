@@ -1,6 +1,8 @@
-#include "play.h"
 #include <string.h>
-#include "colors.h"
+#include <stdio.h>
+#include <ctype.h>
+#include "Definitions.h"
+
 
 void print_sep(Game *g);
 void print_guess_row(char *guess, int colors[], Game *g);

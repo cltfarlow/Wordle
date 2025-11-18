@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include "play.h"
 #include "CheckWord.h"
-#include "check_letter.h"
-#include "colors.h"
+#include "Input.h"
+#include "Definitions.h"
 
 /*
   File: Menu.c

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
+#include "Definitions.h"
 /*
 File: CheckWord.c
 Author: Christopher Farlow
@@ -10,27 +11,6 @@ Assignment: Wordle Project 11/22/2025
 Date: 11/22/2025
 References: ChatGPT, https://www.geeksforgeeks.org/c/get-a-substring-in-c/
 */
-
-/*Five characters*/
-#define FIVE 5
-/*Amount of words in FiveLetterWords.txt*/
-#define FIVE_LETTER_LEN 15933
-/*Amount of words in SmallerFiveLetterWords.txt*/
-#define SMALLER_FIVE_LETTER_LEN 2274
-/*Eight characters*/
-#define EIGHT 8
-/*Amount of words in EightLetterWords.txt*/
-#define EIGHT_LETTER_LEN 51628
-/*Ten Characters*/
-#define TEN 10
-/*Amount of words in TenLetterWords.txt*/
-#define TEN_LETTER_LEN 45873
-
-#define FIVE_PATH "FiveLetterWords.txt"
-#define SMALLER_FIVE_PATH "SmallerFiveLetterWords.txt"
-#define EIGHT_PATH "EightLetterWords.txt"
-#define TEN_PATH "TenLetterWords.txt"
-
 
 int isValidWord(char bigA[], char guess[], int row, int col);
 int initArray(char bigA[], int row, int col);

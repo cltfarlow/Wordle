@@ -126,7 +126,6 @@ void play_loop(Game *g, int colors[])
   int attempt;
   int i, k;
 
-  printf("Answer in play: %s\n", g->answer); /*debug*/
   for (i = 0; i < g->max_tries; i++)
   {
     board[i][0] = '\0';
