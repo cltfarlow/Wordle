@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include "CheckWord.h"
-#include "colors.h"
+#include "Definitions.h"
 #include "Input.h"
 
 /*
