@@ -1,12 +1,8 @@
 #include <string.h>
 #include <stdio.h>
-<<<<<<< HEAD
 #include <ctype.h>
 #include "Definitions.h"
 
-=======
-#include "Definitions.h"
->>>>>>> b825c9030803690e06542e457bfeefcae86e2e60
 
 void print_sep(int word_length);
 void print_guess_row(char *guess, int colors[], int word_length);
