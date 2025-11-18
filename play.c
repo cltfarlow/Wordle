@@ -22,13 +22,10 @@ typedef struct
   char word_list[EIGHT_LETTER_LEN*TEN];
 } Game;
 
-void title();
-void rules(Game *g);
 void play_easy(Game *g);
 void play_medium(Game *g);
 void play_hard(Game *g);
 void play_loop(Game *g, int colors[]);
-void read_attempt(char *guess, Game *g);
 void print_sep(Game *g);
 void print_guess_row(char *guess, int colors[], Game *g);
 void print_color(int colors[], char guess[], Game *g);
@@ -36,29 +33,6 @@ void uppercase(char *s);
 int all_letters(char *s);
 void clear_line();
 int  get_int_choice(char *prompt, int min_val, int max_val);
-
-void title()
-{
-  printf("\n==================================");
-  printf("\n              WORDLE              ");
-  printf("\n==================================\n");
-}
-
-void rules(Game *g)
-{
-  char line[8];
-  printf("\nHow to play Wordle by the Embry-Riddle Times:\n");
-  printf(" 1. Type a guess and press Enter.\n");
-  printf(" 2. Guess the hidden word in %d tries or fewer.\n", g->max_tries);
-  printf(" 3. Each guess must be a valid English word that is %d letters long.\n", g->word_length);
-  printf(" 4. Correct letters in the correct spot appear as GREEN.\n");
-  printf(" 5. Correct letters in the wrong spot appear as ORANGE.\n");
-  printf(" 6. Incorrect letters remain WHITE.\n");
-  printf("\nPress Enter to return to the main menu...");
-  if (fgets(line, sizeof(line), stdin) == NULL)
-  {
-  }
-}
 
 void play_easy(Game *g)
 {
@@ -217,58 +191,6 @@ void play_loop(Game *g, int colors[])
 }
 }
 
-void read_attempt(char *guess, Game *g)
-{
-  int length;
-  int totalPossibleWords;
-
-  switch(g->word_length){
-    case FIVE:
-      totalPossibleWords = FIVE_LETTER_LEN;
-      break;
-    case EIGHT:
-      totalPossibleWords = EIGHT_LETTER_LEN;
-      break;
-    case TEN:
-      totalPossibleWords = TEN_LETTER_LEN;
-      break;
-  }
-
-  while (1)
-  {
-    printf("\nEnter a %d letter guess: ", g->word_length);
-
-    if (fgets(guess, 50, stdin) == NULL)
-    {
-      guess[0] = '\0';
-      return;
-    }
-
-    length = strcspn(guess, "\n");
-    guess[length] = '\0';
-    /*get rid of new line char */
-    
-    if ((int)strlen(guess) != g->word_length)
-    {
-      printf("\nInvalid input, please enter exactly %d letters.\n", g->word_length);
-      continue;
-    } /* guess length must match exactly*/
-
-    if (!all_letters(guess))
-    {
-      printf("\nInvalid input, letters A-Z only (no numbers or symbols).\n");
-      continue;
-    } /* error check for special chars, spaces, numbers in guess */
-
-    if(!isValidWord(g->word_list, guess, totalPossibleWords, g->word_length)){
-      printf("\nNot a valid word\n");
-      continue;
-    }/*Check if it's a valid word*/
-
-    return;
-
-  }
-}
 
 
 void print_sep(Game *g)
