@@ -128,11 +128,11 @@ void play_loop(Game *g, int colors[])
   for (attempt = 0; attempt < g->max_tries; attempt++)
   {
     read_attempt(guess, g->word_length, g->word_list);
-    if (attempt == g->max_tries)
+    if ((attempt == g->max_tries) && (strcmp(guess, g->answer) !=))
     {
       printf("\nNo more tries left. You lost.");
       printf("\nThe answer was: %s.", g->answer);
-      break
+      break;
     }
     if (guess[0] == '\0')
     {
@@ -175,6 +175,7 @@ void play_loop(Game *g, int colors[])
   }
 }
 }
+
 
 
 
