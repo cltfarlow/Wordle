@@ -5,6 +5,7 @@
 #include "CheckWord.h"
 #include "Definitions.h"
 #include "Input.h"
+#include "Output.h"
 
 /*
   File: Menu.c
@@ -23,8 +24,6 @@ void play_easy(Game *g)
 {
   char line[64];
   int colors_FIVE[5];
-  int row = g->word_length;
-  int col = g->max_tries;
   char tempArr[SMALLER_FIVE_LETTER_LEN*FIVE];
   initArray(tempArr, SMALLER_FIVE_LETTER_LEN, FIVE);
   generateRandWord(g->answer, tempArr, SMALLER_FIVE_LETTER_LEN, FIVE);
@@ -55,8 +54,6 @@ void play_medium(Game *g)
 {
   char line[64];
   int colors_EIGHT[8];
-  int row = g->word_length;
-  int col = g->max_tries;
   generateRandWord(g->answer, g->word_list, EIGHT_LETTER_LEN, g->word_length);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
@@ -86,8 +83,6 @@ void play_hard(Game *g)
 {
   char line[64];
   int colors_TEN[10];
-  int row = g->word_length;
-  int col = g->max_tries;
   generateRandWord(g->answer, g->word_list, TEN_LETTER_LEN, g->word_length);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
@@ -153,18 +148,18 @@ void play_loop(Game *g, int colors[])
       }
       empty[g->word_length] = '\0';
       check_letter(guess, color_board[attempt], g->answer, g->word_length); 
-      print_sep(g);
+      print_sep(g->word_length);
       for (i = 0; i < g->max_tries; i++)
       {
         if (board[i][0] != '\0')
         {
-          print_guess_row(board[i], color_board[i], g);
+          print_guess_row(board[i], color_board[i], g->word_length);
         }
         else
         {
-          print_guess_row(empty, color_board[i], g); 
+          print_guess_row(empty, color_board[i], g->word_length); 
         } /* print empty rows*/
-        print_sep(g);
+        print_sep(g->word_length);
       }
       if (strcmp(g->answer, guess) == 0)
       {
