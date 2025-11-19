@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include <string.h> 
-#include "Definitions.h"
+#include <ctype.h>
 #include "play.h"
 #include "CheckWord.h"
 

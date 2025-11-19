@@ -5,7 +5,6 @@
 #include "play.h"
 #include "CheckWord.h"
 #include "Input.h"
-#include "Definitions.h"
 
 /*
   File: Menu.c
@@ -60,7 +59,6 @@ int main()
           break;
         } case 3:
         {
-          int color[TEN];
           g.word_length = 10; 
           g.max_tries = 6;
           if(initArray(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
@@ -87,6 +85,7 @@ int main()
       running = 0;
     }
   }
+  return 0;
 }
 
 void title()

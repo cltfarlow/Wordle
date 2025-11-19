@@ -98,7 +98,7 @@ Arguments:
 Note: for 5 letter words, pass the smaller array as bigA, and use smaller_arr_len as row
 */
 void generateRandWord(char word[], char bigA[], int row, int col){
-    int i, index;
+    int index;
     srand(time(0)*3000);
     index = rand()%row;
     strncpy(word, bigA+index*col, col);

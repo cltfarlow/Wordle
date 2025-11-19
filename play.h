@@ -5,7 +5,7 @@
 void play_easy(Game *g);
 void play_medium(Game *g);
 void play_hard(Game *g);
-void play_loop(Game *g);
+void play_loop(Game *g, int colors[]);
 void uppercase(char *s);
 int all_letters(char *s);
 void clear_line();
