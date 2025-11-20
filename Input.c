@@ -31,15 +31,12 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
                     colors[i] = 2;
                     check_duplicates_FIVE[i] = 1; 
                 }
-                printf("%d", check_duplicates_FIVE[i]);
-
             }
             for (i = 0; i < word_length; i++){
                 for (j = 0; j < word_length; j++){
                     if (guess[i] != answer[i]){
                         for (j = 0; j < word_length; j++){
                             if ((guess[i] == answer[j]) && (check_duplicates_FIVE[j] == 0)){
-                                printf("%d", check_duplicates_FIVE[i]);
                                 colors[i] = 1;
                                 check_duplicates_FIVE[j] = 1; 
                             } 
@@ -56,7 +53,6 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
                     colors[i] = 2;
                     check_duplicates_EIGHT[i] = 1; 
                 }
-                printf("%d", check_duplicates_EIGHT[i]);
 
             }
             for (i = 0; i < word_length; i++){
@@ -64,7 +60,6 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
                     if (guess[i] != answer[i]){
                         for (j = 0; j < word_length; j++){
                             if ((guess[i] == answer[j]) && (check_duplicates_EIGHT[j] == 0)){
-                                printf("%d", check_duplicates_EIGHT[i]);
                                 colors[i] = 1;
                                 check_duplicates_EIGHT[j] = 1; 
                             } 
@@ -81,15 +76,12 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
                     colors[i] = 2;
                     check_duplicates_FIVE[i] = 1; 
                 }
-                printf("%d", check_duplicates_FIVE[i]);
-
             }
             for (i = 0; i < word_length; i++){
                 for (j = 0; j < word_length; j++){
                     if (guess[i] != answer[i]){
                         for (j = 0; j < word_length; j++){
                             if ((guess[i] == answer[j]) && (check_duplicates_FIVE[j] == 0)){
-                                printf("%d", check_duplicates_FIVE[i]);
                                 colors[i] = 1;
                                 check_duplicates_FIVE[j] = 1; 
                             } 
