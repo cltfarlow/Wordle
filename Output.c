@@ -70,7 +70,6 @@ void print_guess_row(char *guess, int colors[], int word_length)
 
     printf("|");
   }
-  printf("\n");
 }
 
 void print_color(int colors[], char guess[], int word_length)
