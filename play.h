@@ -1,6 +1,8 @@
 #ifndef PLAY_H
 
 #include "Definitions.h"
+#include "CheckWord.h"
+#include "Input.h"
 
 void play_easy(Game *g);
 void play_medium(Game *g);

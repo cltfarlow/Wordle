@@ -15,7 +15,8 @@ References: ChatGPT, https://www.geeksforgeeks.org/c/get-a-substring-in-c/
 int isValidWord(char bigA[], char guess[], int row, int col);
 int initArray(char bigA[], int row, int col);
 void generateRandWord(char word[], char bigA[], int row, int col);
-
+int all_letters(char *s);
+void read_attempt(char *guess, int word_length, char word_list[]);
 /*
 binary search algorithm
 returns 1 if word is valid, 0 if not
@@ -95,6 +96,68 @@ int initArray(char bigA[], int row, int col){
     return 0;
 }
 
+void read_attempt(char *guess, int word_length, char word_list[])
+{
+  int length;
+  int totalPossibleWords;
+
+  switch(word_length){
+    case FIVE:
+      totalPossibleWords = FIVE_LETTER_LEN;
+      break;
+    case EIGHT:
+      totalPossibleWords = EIGHT_LETTER_LEN;
+      break;
+    case TEN:
+      totalPossibleWords = TEN_LETTER_LEN;
+      break;
+  }
+
+  while (1)
+  {
+    printf("\nEnter a %d letter guess: ", word_length);
+
+    if (fgets(guess, 50, stdin) == NULL)
+    {
+      guess[0] = '\0';
+      return;
+    }
+
+    length = strcspn(guess, "\n");
+    guess[length] = '\0';
+    /*get rid of new line char */
+    
+    if ((int)strlen(guess) != word_length)
+    {
+      printf("\nInvalid input, please enter exactly %d letters.\n", word_length);
+      continue;
+    } /* guess length must match exactly*/
+
+    if (!all_letters(guess))
+    {
+      printf("\nInvalid input, letters A-Z only (no numbers or symbols).\n");
+      continue;
+    } /* error check for special chars, spaces, numbers in guess */
+
+    if(!isValidWord(word_list, guess, totalPossibleWords, word_length)){
+      printf("\nNot a valid word\n");
+      continue;
+    }/*Check if it's a valid word*/
+    return;
+
+  }
+}
+
+int all_letters(char *s)
+{
+  int i;
+  for (i = 0; s[i] != '\0'; i++)
+  {
+    unsigned char ch = (unsigned char)s[i];
+    if (!isalpha(ch)) return 0;  
+  }/* reject digits/symbols/space  */
+  return 1;
+}
 /*
 Copies a random word from bigA into word
 Arguments:

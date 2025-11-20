@@ -7,15 +7,7 @@
 void print_sep(int word_length);
 void print_guess_row(char *guess, int colors[], int word_length);
 void print_color(int colors[], char guess[], int word_length);
-void clear_line();
 
-void clear_line()
-{
-  int c;
-  while ((c = getchar()) != '\n' && c != EOF)
-  {
-  }
-}
 
 void print_sep(int word_length)
 {

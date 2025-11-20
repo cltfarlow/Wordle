@@ -3,9 +3,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include "play.h"
-#include "CheckWord.h"
-#include "Input.h"
-
 /*
   File: Menu.c
   Author: Emilina Salazar

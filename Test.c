@@ -1,32 +1,13 @@
 
+
 #include <stdio.h>
-#include <string.h> 
+#include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
-#include "definitions.h"
 
-/* 
+#define TEN 10
+#define EIGHT 8
+#define FIVE 5
 
-  File: check_letter.c
-  Author: Max Klein
-  Assignment: Wordle Project 11/22/2025
-  Date: 11/22/2025
-  References: notes, google
-
-*/
-void clear_line();
-void check_letter(char guess[], int colors[], char answer[], int word_length);
-int get_int_choice(char *prompt, int min_value, int max_value);
-void uppercase(char *s);
-
-
-void clear_line()
-{
-  int c;
-  while ((c = getchar()) != '\n' && c != EOF)
-  {
-  }
-}
 void check_letter(char guess[], int colors[], char answer[], int word_length) {
     int i; 
 
@@ -42,12 +23,15 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
                     colors[i] = 2;
                     check_duplicates_FIVE[i] = 1; 
                 }
+                printf("%d", check_duplicates_FIVE[i]);
+
             }
             for (i = 0; i < word_length; i++){
                 for (j = 0; j < word_length; j++){
                     if (guess[i] != answer[i]){
                         for (j = 0; j < word_length; j++){
                             if ((guess[i] == answer[j]) && (check_duplicates_FIVE[j] == 0)){
+                                printf("%d", check_duplicates_FIVE[i]);
                                 colors[i] = 1;
                                 check_duplicates_FIVE[j] = 1; 
                             } 
@@ -64,6 +48,7 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
                     colors[i] = 2;
                     check_duplicates_EIGHT[i] = 1; 
                 }
+                printf("%d", check_duplicates_EIGHT[i]);
 
             }
             for (i = 0; i < word_length; i++){
@@ -71,6 +56,7 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
                     if (guess[i] != answer[i]){
                         for (j = 0; j < word_length; j++){
                             if ((guess[i] == answer[j]) && (check_duplicates_EIGHT[j] == 0)){
+                                printf("%d", check_duplicates_EIGHT[i]);
                                 colors[i] = 1;
                                 check_duplicates_EIGHT[j] = 1; 
                             } 
@@ -87,12 +73,15 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
                     colors[i] = 2;
                     check_duplicates_FIVE[i] = 1; 
                 }
+                printf("%d", check_duplicates_FIVE[i]);
+
             }
             for (i = 0; i < word_length; i++){
                 for (j = 0; j < word_length; j++){
                     if (guess[i] != answer[i]){
                         for (j = 0; j < word_length; j++){
                             if ((guess[i] == answer[j]) && (check_duplicates_FIVE[j] == 0)){
+                                printf("%d", check_duplicates_FIVE[i]);
                                 colors[i] = 1;
                                 check_duplicates_FIVE[j] = 1; 
                             } 
@@ -105,37 +94,17 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
     }
 }
 
+int main(){
+    char guess[50];
+    char buffer[50]; 
+    printf("Guess\n");
+    scanf("%s",guess); 
+    int color[5];
+    char answer[50];
+    strcpy(answer, "aisle");
 
-void uppercase(char *s)
-{
-  size_t i;
-  if (s == NULL) return;
-  for (i = 0; s[i] != '\0'; ++i)
-  {
-    /* cast to unsigned char to avoid UB for negative chars */
-    s[i] = (char)toupper((unsigned char)s[i]);
-  }
-}
-
-
-
-
-
-int get_int_choice(char *prompt, int min_value, int max_value)
-{
-  int value;
-  int scan;
-  
-  printf("%s", prompt);
-  scan = scanf("%d", &value);
-
-  while (scan != 1 || value < min_value || value > max_value)
-  {
-    printf("\nInvalid input. Enter a number between %d and %d: ", min_value, max_value);
-    clear_line();
-    scan = scanf("%d", &value);
-  }
-
-  clear_line();
-  return value;
+    check_letter(guess, color, answer, 5);
+    for(int i = 0; i < 5; i++){
+        printf("%d ", color[i]);
+    }
 }
