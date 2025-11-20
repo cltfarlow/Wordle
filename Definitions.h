@@ -35,6 +35,7 @@ typedef struct
   int max_tries;
   char answer[TEN+1];
   char word_list[EIGHT_LETTER_LEN*TEN];
+  char smaller_word_list[SMALLER_FIVE_LETTER_LEN*FIVE+1];
 } Game;
 
 #endif

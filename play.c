@@ -24,9 +24,7 @@ void play_easy(Game *g)
 {
   char line[64];
   int colors_FIVE[5];
-  char tempArr[SMALLER_FIVE_LETTER_LEN*FIVE];
-  initArray(tempArr, SMALLER_FIVE_LETTER_LEN, FIVE);
-  generateRandWord(g->answer, tempArr, SMALLER_FIVE_LETTER_LEN, FIVE);
+  generateRandWord(g->answer, g->smaller_word_list, SMALLER_FIVE_LETTER_LEN, FIVE);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
   printf("\n+---+---+---+---+---+\n");
@@ -134,14 +132,13 @@ void play_loop(Game *g, int colors[])
     } 
     
     
-
-
+    
     strcpy(board[attempt], guess); 
     /*store guess*/
     {
       char empty[50];
       int k;
-
+      
       for (k = 0; k < g->word_length; k++)
       {
         empty[k] = ' ';
@@ -166,9 +163,17 @@ void play_loop(Game *g, int colors[])
         printf("\ncongragulations you won!");
         return; 
       }
+    }
+  }
+  if (strcmp(guess, g->answer) != 0)
+  {
+    printf("\nNo more tries left. You lost.");
+    printf("\nThe answer was: %s.", g->answer);
   }
 }
-}
+
+
+
 
 
 

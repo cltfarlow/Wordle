@@ -25,6 +25,7 @@ int main()
   g.max_tries = 6;
   int running = 1;
   title();
+  initArray(g.smaller_word_list, SMALLER_FIVE_LETTER_LEN, FIVE);
   
   while (running)
   {
@@ -45,13 +46,11 @@ int main()
         {
           g.word_length = FIVE; 
           g.max_tries = 6;
-          int color[FIVE];
           if(initArray(g.word_list, FIVE_LETTER_LEN, FIVE)) return 1;
           play_easy(&g);
           break;
         } case 2:
         {
-          int color[EIGHT];
           g.word_length = 8; 
           g.max_tries = 6;
           if(initArray(g.word_list, EIGHT_LETTER_LEN, EIGHT)) return 1;
