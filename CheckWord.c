@@ -60,7 +60,14 @@ Arguments:
 @col: amount of characters in words
 */
 int initArray(char bigA[], int row, int col){
+    int i;
     FILE *filePointer;
+    /*clear bigA*/
+    if(row!=SMALLER_FIVE_LETTER_LEN){
+        for(i = 0; i<EIGHT_LETTER_LEN*TEN; i++){
+            bigA[i] = '\0';
+        }
+    }
     switch(col){
         case FIVE:
             if(row==SMALLER_FIVE_LETTER_LEN){
