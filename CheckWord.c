@@ -7,6 +7,7 @@
 /*
 File: CheckWord.c
 Author: Christopher Farlow
+Debugged: Christopher Farlow
 Assignment: Wordle Project 11/22/2025
 Date: 11/22/2025
 References: ChatGPT, https://www.geeksforgeeks.org/c/get-a-substring-in-c/

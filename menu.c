@@ -6,6 +6,7 @@
 /*
   File: Menu.c
   Author: Emilina Salazar
+  Debugged: Christopher Farlow
   Assignment: Wordle Project 11/22/2025
   Date: 11/22/2025
   References: notes, google

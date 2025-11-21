@@ -3,12 +3,27 @@
 #include <ctype.h>
 #include "Definitions.h"
 
+/* 
+
+  File: Output.c
+  Author: Emilina Salazar
+  Debugged: Christopher Farlow, Max Klein
+  Assignment: Wordle Project 11/22/2025
+  Date: 11/22/2025
+  References: notes, google
+
+*/
 
 void print_sep(int word_length);
 void print_guess_row(char *guess, int colors[], int word_length);
 void print_color(int colors[], char guess[], int word_length);
 
-
+/*
+  Prints a separator line based on the word length
+  Arguments:
+  @word_length: length of the word being guessed
+  Returns: none
+*/
 void print_sep(int word_length)
 {
   int i;
@@ -21,7 +36,14 @@ void print_sep(int word_length)
   }
   printf("+\n");
 }
-
+/* 
+  Prints a row of the guessed word with color coding based on correctness
+  Arguments:
+  @guess: the user's guessed word
+  @colors: array containing color codes for each letter in guess
+  @word_length: length of the word being guessed
+  Returns: none
+*/
 void print_guess_row(char *guess, int colors[], int word_length)
 {
   int i;
@@ -63,7 +85,14 @@ void print_guess_row(char *guess, int colors[], int word_length)
     printf("|");
   }
 }
-
+/*
+  Prints the guessed word with color coding based on correctness
+  Arguments:
+  @colors: array containing color codes for each letter in guess
+  @guess: the user's guessed word
+  @word_length: length of the word being guessed
+  Returns: none
+*/
 void print_color(int colors[], char guess[], int word_length)
 {
   print_sep(word_length);
