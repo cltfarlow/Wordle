@@ -6,8 +6,9 @@
 /*
   File: Menu.c
   Author: Emilina Salazar
+  Debugged: Christopher Farlow, and Max Klein
   Assignment: Wordle Project 11/22/2025
-  Date: 11/22/2025
+  Date: 11/22/2025yu
   References: notes, google
 */
 
@@ -59,7 +60,7 @@ int main()
         } case 3:
         {
           g.word_length = 10; 
-          g.max_tries = 6;
+          g.max_tries = 10;
           if(initArray(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
           play_hard(&g);
           break;
@@ -91,7 +92,7 @@ int main()
 }
 /*
   title function - prints titles
-  no input/output needed
+  arguments: none
 */
 void title()
 {
@@ -101,7 +102,9 @@ void title()
 }
 /*
   rules function - prints rules for specific game settings
-  game *g is the struct for the game that must be inputted and has the word length and number of tries
+  arguments:
+  game *g = the struct for the game 
+    g->max_tries = max number of tries player gets
 */
 void rules(Game *g)
 {
@@ -119,3 +122,4 @@ void rules(Game *g)
   } /* wait for player to press 'enter' */
 
 }
+
