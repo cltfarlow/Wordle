@@ -6,7 +6,11 @@
 /*
   File: Menu.c
   Author: Emilina Salazar
+<<<<<<< HEAD
+  Debugged: Christopher Farlow
+=======
   Debugged: Christopher Farlow, and Max Klein
+>>>>>>> 0dff2fee6223a681c99228acb03f13bf4b652b32
   Assignment: Wordle Project 11/22/2025
   Date: 11/22/2025yu
   References: notes, google
