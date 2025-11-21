@@ -11,13 +11,15 @@
   References: notes, google
 */
 
+/* function pre-declarations */
 void title();
 void rules(Game *g);
 
 int main()
 {
   Game g;
-  int difficulty = 1; /*default*/
+  /*default to normal wordle settings*/
+  int difficulty = 1; 
   g.word_length = 5;
   g.max_tries = 6;
   int running = 1;
@@ -26,6 +28,7 @@ int main()
   
   while (running)
   {
+   /* print menu at start of program and wait for player input */
     int choice;
     printf("\n=========== MAIN  MENU ===========\n");
     printf(" 1) Play\n");
@@ -69,6 +72,9 @@ int main()
     }
     else if (choice == 3)
     {
+      /* get_int_choice can be found in input.c
+        gets player input for difficulty setting
+      */
       difficulty = get_int_choice(
           "\nChoose difficulty:\n  1: Easy - 5 letter words with 6 tries\n  2: Medium - 8 letter word with 6 tires\n  3: Hard - 10 letter word with 6 tries\n> ",
           1, 3);
@@ -79,18 +85,24 @@ int main()
     {
       printf("\nGoodbye!\n");
       running = 0;
-    }
+    } /* chooses to exit program */
   }
   return 0;
 }
-
+/*
+  title function - prints titles
+  no input/output needed
+*/
 void title()
 {
   printf("\n==================================");
   printf("\n              WORDLE              ");
   printf("\n==================================\n");
 }
-
+/*
+  rules function - prints rules for specific game settings
+  game *g is the struct for the game that must be inputted and has the word length and number of tries
+*/
 void rules(Game *g)
 {
   char line[8];
@@ -104,5 +116,6 @@ void rules(Game *g)
   printf("\nPress Enter to return to the main menu...");
   if (fgets(line, sizeof(line), stdin) == NULL)
   {
-  }
+  } /* wait for player to press 'enter' */
+
 }
