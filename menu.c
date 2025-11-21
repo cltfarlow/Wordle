@@ -6,19 +6,25 @@
 /*
   File: Menu.c
   Author: Emilina Salazar
+<<<<<<< HEAD
   Debugged: Christopher Farlow
+=======
+  Debugged: Christopher Farlow, and Max Klein
+>>>>>>> 0dff2fee6223a681c99228acb03f13bf4b652b32
   Assignment: Wordle Project 11/22/2025
-  Date: 11/22/2025
+  Date: 11/22/2025yu
   References: notes, google
 */
 
+/* function pre-declarations */
 void title();
 void rules(Game *g);
 
 int main()
 {
   Game g;
-  int difficulty = 1; /*default*/
+  /*default to normal wordle settings*/
+  int difficulty = 1; 
   g.word_length = 5;
   g.max_tries = 6;
   int running = 1;
@@ -27,6 +33,7 @@ int main()
   
   while (running)
   {
+   /* print menu at start of program and wait for player input */
     int choice;
     printf("\n=========== MAIN  MENU ===========\n");
     printf(" 1) Play\n");
@@ -57,7 +64,7 @@ int main()
         } case 3:
         {
           g.word_length = 10; 
-          g.max_tries = 6;
+          g.max_tries = 10;
           if(initArray(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
           play_hard(&g);
           break;
@@ -70,6 +77,9 @@ int main()
     }
     else if (choice == 3)
     {
+      /* get_int_choice can be found in input.c
+        gets player input for difficulty setting
+      */
       difficulty = get_int_choice(
           "\nChoose difficulty:\n  1: Easy - 5 letter words with 6 tries\n  2: Medium - 8 letter word with 6 tires\n  3: Hard - 10 letter word with 6 tries\n> ",
           1, 3);
@@ -80,18 +90,26 @@ int main()
     {
       printf("\nGoodbye!\n");
       running = 0;
-    }
+    } /* chooses to exit program */
   }
   return 0;
 }
-
+/*
+  title function - prints titles
+  arguments: none
+*/
 void title()
 {
   printf("\n==================================");
   printf("\n              WORDLE              ");
   printf("\n==================================\n");
 }
-
+/*
+  rules function - prints rules for specific game settings
+  arguments:
+  game *g = the struct for the game 
+    g->max_tries = max number of tries player gets
+*/
 void rules(Game *g)
 {
   char line[8];
@@ -105,5 +123,7 @@ void rules(Game *g)
   printf("\nPress Enter to return to the main menu...");
   if (fgets(line, sizeof(line), stdin) == NULL)
   {
-  }
+  } /* wait for player to press 'enter' */
+
 }
+

@@ -13,34 +13,35 @@ Date: 11/22/2025
 References: ChatGPT, https://www.geeksforgeeks.org/c/get-a-substring-in-c/
 */
 
-int isValidWord(char bigA[], char guess[], int row, int col);
-int initArray(char bigA[], int row, int col);
-void generateRandWord(char word[], char bigA[], int row, int col);
+int is_valid_word(char allowed_words[], char guess[], int row, int col);
+int init_array(char array[], int row, int col);
+void generate_rand_word(char word[], char possible_words[], int row, int col);
 int all_letters(char *s);
 void read_attempt(char *guess, int word_length, char word_list[]);
+
 /*
 binary search algorithm
 returns 1 if word is valid, 0 if not
 Arguments:
-@bigA: the array with every valid word
+@allowed_words: the array with every valid word
 @guess: the word to see is valid
 @row: amount of words in bigA
 @col: amount of characters in words
 */
-int isValidWord(char bigA[], char givenGuess[], int row, int col){
+int is_valid_word(char allowed_words[], char given_guess[], int row, int col){
     char guess[col+2];
     int left = 0, right = row, mid, cmp, i;
     char word[col];
     
     /*convert guess to lowercase*/
-    strcpy(guess, givenGuess);
+    strcpy(guess, given_guess);
     for(i = 0; i<col; i++){
         guess[i] = tolower(guess[i]);
     }
 
     while(left<=right){
         mid = left+(right-left)/2;
-        strncpy(word, bigA+mid*col, col);
+        strncpy(word, allowed_words+mid*col, col);
         cmp = strncmp(word, guess, col);
         if(cmp==0){
             return 1;
@@ -57,60 +58,60 @@ int isValidWord(char bigA[], char givenGuess[], int row, int col){
 Adds words from corresponding txt file to bigA based on @row and @col
 Returns 1 if array initialization failed, 0 if it succeedes
 Arguments:
-@bigA: the array to store valid words
+@array: the array to store valid words
 @row: amount of words in bigA
 @col: amount of characters in words
 */
-int initArray(char bigA[], int row, int col){
+int init_array(char array[], int row, int col){
     int i;
-    FILE *filePointer;
-    /*clear bigA*/
+    FILE *file_pointer;
+    /*clear array*/
     if(row!=SMALLER_FIVE_LETTER_LEN){
         for(i = 0; i<EIGHT_LETTER_LEN*TEN; i++){
-            bigA[i] = '\0';
+            array[i] = '\0';
         }
     }
     switch(col){
         case FIVE:
             if(row==SMALLER_FIVE_LETTER_LEN){
-                filePointer = fopen(SMALLER_FIVE_PATH, "r");
+                file_pointer = fopen(SMALLER_FIVE_PATH, "r");
             }else{
-                filePointer = fopen(FIVE_PATH, "r");
+                file_pointer = fopen(FIVE_PATH, "r");
             }
             break;
         case EIGHT:
-            filePointer = fopen(EIGHT_PATH, "r");
+            file_pointer = fopen(EIGHT_PATH, "r");
             break;
         case TEN:
-            filePointer = fopen(TEN_PATH, "r");
+            file_pointer = fopen(TEN_PATH, "r");
             break;
     }
-    if(filePointer == NULL){
+    if(file_pointer == NULL){
         printf("Error opening file");
         return 1;
     }
     char line[col+2];
-    while(fgets(line, sizeof(line), filePointer)!=NULL){
-        strncat(bigA, line,col);
+    while(fgets(line, sizeof(line), file_pointer)!=NULL){
+        strncat(array, line,col);
     }
-    fclose(filePointer);
+    fclose(file_pointer);
     return 0;
 }
 
 void read_attempt(char *guess, int word_length, char word_list[])
 {
   int length;
-  int totalPossibleWords;
+  int total_possible_words;
 
   switch(word_length){
     case FIVE:
-      totalPossibleWords = FIVE_LETTER_LEN;
+      total_possible_words = FIVE_LETTER_LEN;
       break;
     case EIGHT:
-      totalPossibleWords = EIGHT_LETTER_LEN;
+      total_possible_words = EIGHT_LETTER_LEN;
       break;
     case TEN:
-      totalPossibleWords = TEN_LETTER_LEN;
+      total_possible_words = TEN_LETTER_LEN;
       break;
   }
 
@@ -140,7 +141,7 @@ void read_attempt(char *guess, int word_length, char word_list[])
       continue;
     } /* error check for special chars, spaces, numbers in guess */
 
-    if(!isValidWord(word_list, guess, totalPossibleWords, word_length)){
+    if(!is_valid_word(word_list, guess, total_possible_words, word_length)){
       printf("\nNot a valid word\n");
       continue;
     }/*Check if it's a valid word*/
@@ -168,9 +169,9 @@ Arguments:
 @col: amount of characters in words
 Note: for 5 letter words, pass the smaller array as bigA, and use smaller_arr_len as row
 */
-void generateRandWord(char word[], char bigA[], int row, int col){
+void generate_rand_word(char word[], char possible_words[], int row, int col){
     int index;
     srand(time(0)*3000);
     index = rand()%row;
-    strncpy(word, bigA+index*col, col);
+    strncpy(word, possible_words+index*col, col);
 }
