@@ -6,11 +6,7 @@
 /*
   File: Menu.c
   Author: Emilina Salazar
-<<<<<<< HEAD
-  Debugged: Christopher Farlow
-=======
   Debugged: Christopher Farlow, and Max Klein
->>>>>>> 0dff2fee6223a681c99228acb03f13bf4b652b32
   Assignment: Wordle Project 11/22/2025
   Date: 11/22/2025yu
   References: notes, google
@@ -57,20 +53,15 @@ int main()
         } case 2:
         {
           g.word_length = 8; 
-          g.max_tries = 6;
+          g.max_tries = 8;
           if(init_array(g.word_list, EIGHT_LETTER_LEN, EIGHT)) return 1;
           play_medium(&g);
           break;
         } case 3:
         {
           g.word_length = 10; 
-<<<<<<< HEAD
-          g.max_tries = 6;
-          if(init_array(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
-=======
           g.max_tries = 10;
-          if(initArray(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
->>>>>>> 0dff2fee6223a681c99228acb03f13bf4b652b32
+          if(init_array(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
           play_hard(&g);
           break;
         }
@@ -86,7 +77,7 @@ int main()
         gets player input for difficulty setting
       */
       difficulty = get_int_choice(
-          "\nChoose difficulty:\n  1: Easy - 5 letter words with 6 tries\n  2: Medium - 8 letter word with 6 tires\n  3: Hard - 10 letter word with 6 tries\n> ",
+          "\nChoose difficulty:\n  1: Easy - 5 letter words with 6 tries\n  2: Medium - 8 letter word with 8 tires\n  3: Hard - 10 letter word with 10 tries\n> ",
           1, 3);
       printf("\nDifficulty set: word length = %d, max tries = %d\n",
              g.word_length, g.max_tries);

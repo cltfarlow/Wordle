@@ -59,17 +59,17 @@ void check_letter(char guess[], int colors[], char answer[], int word_length) {
     }
     switch(word_length){
         case 5: {
-            // Initializes the check duplicates array to keep track of letters already matched
+            /*Initializes the check duplicates array to keep track of letters already matched*/
             int check_duplicates_FIVE[FIVE] = {0};
-            // First pass: check for correct letters in correct positions, updates color and duplicates arrays 
+            /* First pass: check for correct letters in correct positions, updates color and duplicates arrays */
             for (i = 0; i < word_length; i++){
                 if (guess[i] == answer[i]) {
                     colors[i] = 2;
                     check_duplicates_FIVE[i] = 1; 
                 }
             }
-            // Second pass: check for correct letter in incorrect positions
-            // updates color and duplicates arrays accordingly, if 
+            /* Second pass: check for correct letter in incorrect positions
+             updates color and duplicates arrays accordingly, if */
             for (i = 0; i < word_length; i++){
                 for (j = 0; j < word_length; j++){
                     if (guess[i] != answer[i]){
@@ -167,15 +167,15 @@ int get_int_choice(char *prompt, int min_value, int max_value)
   
   printf("%s", prompt);
   scan = scanf("%d", &value);
-  // Loop until valid input is received
+  /* Loop until valid input is received*/
   while (scan != 1 || value < min_value || value > max_value)
   {
     printf("\nInvalid input. Enter a number between %d and %d: ", min_value, max_value);
-    // clear the input line to avoid infinite loop on invalid input
+    /* clear the input line to avoid infinite loop on invalid input*/
     clear_line();
     scan = scanf("%d", &value);
   }
-  // clear the input line to avoid affecting subsequent inputs
+  /* clear the input line to avoid affecting subsequent inputs*/
   clear_line();
   return value;
 }
