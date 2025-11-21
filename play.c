@@ -24,7 +24,7 @@ void play_easy(Game *g)
 {
   char line[64];
   int colors_FIVE[5];
-  generateRandWord(g->answer, g->smaller_word_list, SMALLER_FIVE_LETTER_LEN, FIVE);
+  generate_rand_word(g->answer, g->smaller_word_list, SMALLER_FIVE_LETTER_LEN, FIVE);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
   printf("\n+---+---+---+---+---+\n");
@@ -52,7 +52,7 @@ void play_medium(Game *g)
 {
   char line[64];
   int colors_EIGHT[8];
-  generateRandWord(g->answer, g->word_list, EIGHT_LETTER_LEN, g->word_length);
+  generate_rand_word(g->answer, g->word_list, EIGHT_LETTER_LEN, g->word_length);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
   printf("\n+---+---+---+---+---+---+---+---+\n");
@@ -81,7 +81,7 @@ void play_hard(Game *g)
 {
   char line[64];
   int colors_TEN[10];
-  generateRandWord(g->answer, g->word_list, TEN_LETTER_LEN, g->word_length);
+  generate_rand_word(g->answer, g->word_list, TEN_LETTER_LEN, g->word_length);
   printf("\n[Play] Starting game with word length %d and %d max tries.\n",
          g->word_length, g->max_tries);
   printf("\n+---+---+---+---+---+---+---+---+---+---+\n");

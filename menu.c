@@ -22,7 +22,7 @@ int main()
   g.max_tries = 6;
   int running = 1;
   title();
-  initArray(g.smaller_word_list, SMALLER_FIVE_LETTER_LEN, FIVE);
+  init_array(g.smaller_word_list, SMALLER_FIVE_LETTER_LEN, FIVE);
   
   while (running)
   {
@@ -43,21 +43,21 @@ int main()
         {
           g.word_length = FIVE; 
           g.max_tries = 6;
-          if(initArray(g.word_list, FIVE_LETTER_LEN, FIVE)) return 1;
+          if(init_array(g.word_list, FIVE_LETTER_LEN, FIVE)) return 1;
           play_easy(&g);
           break;
         } case 2:
         {
           g.word_length = 8; 
           g.max_tries = 6;
-          if(initArray(g.word_list, EIGHT_LETTER_LEN, EIGHT)) return 1;
+          if(init_array(g.word_list, EIGHT_LETTER_LEN, EIGHT)) return 1;
           play_medium(&g);
           break;
         } case 3:
         {
           g.word_length = 10; 
           g.max_tries = 6;
-          if(initArray(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
+          if(init_array(g.word_list, TEN_LETTER_LEN, TEN)) return 1;
           play_hard(&g);
           break;
         }

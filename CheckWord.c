@@ -5,11 +5,11 @@
 #include <time.h>
 #include "Definitions.h"
 /*
-File: CheckWord.c
-Author: Christopher Farlow
-Assignment: Wordle Project 11/22/2025
-Date: 11/22/2025
-References: ChatGPT, https://www.geeksforgeeks.org/c/get-a-substring-in-c/
+  File: CheckWord.c
+  Author: Christopher Farlow
+  Assignment: Wordle Project 11/22/2025
+  Date: 11/22/2025
+  References: ChatGPT, https://www.geeksforgeeks.org/c/get-a-substring-in-c/
 */
 
 int is_valid_word(char allowed_words[], char guess[], int row, int col);
@@ -160,13 +160,13 @@ int all_letters(char *s)
   return 1;
 }
 /*
-Copies a random word from bigA into word
+Copies a random word from possible_words into word
 Arguments:
 @word: the char array to store the generated word
 @bigA: the array with every word to pull a word from
-@row: amount of words in bigA
+@row: amount of words in possible_words
 @col: amount of characters in words
-Note: for 5 letter words, pass the smaller array as bigA, and use smaller_arr_len as row
+Note: for 5 letter words, pass the smaller array as possible_words, and use smaller_arr_len as row
 */
 void generate_rand_word(char word[], char possible_words[], int row, int col){
     int index;
