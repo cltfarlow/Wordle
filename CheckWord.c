@@ -90,7 +90,7 @@ int init_array(char array[], int row, int col){
         printf("Error opening file");
         return 1;
     }
-    char line[col+2];
+    char line[col+3];
     while(fgets(line, sizeof(line), file_pointer)!=NULL){
         strncat(array, line,col);
     }

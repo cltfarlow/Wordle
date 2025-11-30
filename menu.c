@@ -26,6 +26,7 @@ int main()
   int running = 1;
   title();
   init_array(g.smaller_word_list, SMALLER_FIVE_LETTER_LEN, FIVE);
+  difficulty = 1;
   
   while (running)
   {
